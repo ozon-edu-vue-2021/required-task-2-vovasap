@@ -1,5 +1,5 @@
 <template>
-  <div class="title">
+  <div class="title" @click="$emit('update:showContents', !showContents)">
     <icon icon="directory" />
     <span>
       {{ name }}
@@ -17,6 +17,9 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    showContents: {
+      type: Boolean,
     },
   },
 }

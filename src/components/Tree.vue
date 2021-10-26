@@ -1,13 +1,18 @@
 <template>
   <div class="indent">
     <div v-for="content in contents" :key="content.name">
-      <directory v-if="content.type === 'directory'" :name="content.name" />
+      <directory
+        v-if="content.type === 'directory'"
+        :name="content.name"
+        :show-contents.sync="showContents"
+      />
 
       <component v-else :is="`v-${content.type}`" v-bind="content" />
 
-      <template v-if="content.contents">
-        <tree :contents="content.contents" />
-      </template>
+      <tree
+        v-if="content.contents && showContents"
+        :contents="content.contents"
+      />
     </div>
   </div>
 </template>
