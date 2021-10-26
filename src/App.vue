@@ -44,8 +44,4 @@ export default {
 .indent {
   margin-left: 10px;
 }
-.title {
-  display: flex;
-  gap: 10px;
-}
 </style>

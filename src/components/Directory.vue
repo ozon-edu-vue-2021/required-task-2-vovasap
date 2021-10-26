@@ -1,17 +1,20 @@
 <template>
-  <div class="title" @click="$emit('update:showContents', !showContents)">
-    <icon icon="directory" />
+  <tree-item-layout
+    icon="directory"
+    @click="$emit('update:showContents', !showContents)"
+  >
     <span>
       {{ name }}
     </span>
-  </div>
+  </tree-item-layout>
 </template>
 
 <script>
-import Icon from '@/components/Icon'
+import TreeItemLayout from '@/layouts/TreeItemLayout'
+
 export default {
   components: {
-    Icon,
+    TreeItemLayout,
   },
   props: {
     name: {

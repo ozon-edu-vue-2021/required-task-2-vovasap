@@ -1,17 +1,17 @@
 <template>
-  <div class="title">
-    <icon icon="file" />
+  <tree-item-layout icon="file">
     <span>
       {{ name }}
     </span>
-  </div>
+  </tree-item-layout>
 </template>
 
 <script>
-import Icon from '@/components/Icon'
+import TreeItemLayout from '@/layouts/TreeItemLayout'
+
 export default {
   components: {
-    Icon,
+    TreeItemLayout,
   },
   props: {
     name: {

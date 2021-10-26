@@ -1,17 +1,17 @@
 <template>
-  <div class="title">
-    <icon icon="link" />
-    <a :src="target" target="_blank">
+  <tree-item-layout icon="link">
+    <span>
       {{ name }}
-    </a>
-  </div>
+    </span>
+  </tree-item-layout>
 </template>
 
 <script>
-import Icon from '@/components/Icon'
+import TreeItemLayout from '@/layouts/TreeItemLayout'
+
 export default {
   components: {
-    Icon,
+    TreeItemLayout,
   },
   props: {
     name: {
