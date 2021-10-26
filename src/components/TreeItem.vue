@@ -25,7 +25,8 @@ export default {
       type: String,
       default: null,
       validator: (value) =>
-        !value || ['directory', 'file', 'link'].includes(value),
+        !value ||
+        ['directory', 'directory-open', 'file', 'link'].includes(value),
     },
     name: {
       type: String,

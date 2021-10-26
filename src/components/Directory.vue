@@ -1,6 +1,6 @@
 <template>
   <tree-item
-    icon="directory"
+    :icon="showContents ? 'directory-open' : 'directory'"
     :name="name"
     @click="toggleContentsDisplay"
     @keyup.enter="toggleContentsDisplay"
