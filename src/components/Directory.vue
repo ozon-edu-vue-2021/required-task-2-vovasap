@@ -2,7 +2,8 @@
   <tree-item
     icon="directory"
     :name="name"
-    @click="$emit('update:showContents', !showContents)"
+    @click="toggleContentsDisplay"
+    @keyup.enter="toggleContentsDisplay"
   />
 </template>
 
@@ -20,6 +21,11 @@ export default {
     },
     showContents: {
       type: Boolean,
+    },
+  },
+  methods: {
+    toggleContentsDisplay() {
+      this.$emit('update:showContents', !this.showContents)
     },
   },
 }

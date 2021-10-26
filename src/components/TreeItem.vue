@@ -7,6 +7,7 @@
         class="tree-item-layout__input"
         type="text"
         :value="name"
+        @keyup.enter="$emit('keyup', $event)"
       />
       <div class="tree-item-layout__overlay"></div>
     </div>
