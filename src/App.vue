@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <folder :value="test" />
+    <tree-item :contents="[test]" />
   </div>
 </template>
 
 <script>
-import Folder from '@/components/Folder'
+import TreeItem from '@/components/TreeItem'
 
 export default {
   name: 'App',
   components: {
-    Folder,
+    TreeItem,
   },
   data() {
     return {
@@ -19,7 +19,7 @@ export default {
         name: 'code-frame',
         contents: [
           { type: 'file', name: 'LICENSE' },
-          { type: 'link', target: 'https://www.ozon.ru/' },
+          { type: 'link', name: 'ozon', target: 'https://www.ozon.ru/' },
           {
             type: 'directory',
             name: 'lib',
@@ -40,9 +40,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .indent {
-  margin-left: 4px;
+  margin-left: 10px;
+}
+.title {
+  display: flex;
+  gap: 10px;
 }
 </style>
