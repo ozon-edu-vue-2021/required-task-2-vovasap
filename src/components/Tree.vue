@@ -6,7 +6,7 @@
       <component v-else :is="`v-${content.type}`" v-bind="content" />
 
       <template v-if="content.contents">
-        <tree-item :contents="content.contents" />
+        <tree :contents="content.contents" />
       </template>
     </div>
   </div>
@@ -15,7 +15,7 @@
 <script>
 export default {
   components: {
-    TreeItem: () => import('@/components/TreeItem'),
+    Tree: () => import('@/components/Tree'),
     Directory: () => import('@/components/Directory'),
     vFile: () => import('@/components/File'),
     vLink: () => import('@/components/Link'),

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <tree-item :contents="[test]" />
+    <tree :contents="[test]" />
   </div>
 </template>
 
 <script>
-import TreeItem from '@/components/TreeItem'
+import Tree from '@/components/Tree'
 
 export default {
   name: 'App',
   components: {
-    TreeItem,
+    Tree,
   },
   data() {
     return {
