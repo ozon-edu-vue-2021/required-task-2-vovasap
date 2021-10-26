@@ -1,24 +1,20 @@
 <template>
-  <tree-item-layout icon="link">
-    <span>
-      {{ name }}
-    </span>
-  </tree-item-layout>
+  <tree-item :icon="type" :name="name" can-selected />
 </template>
 
 <script>
-import TreeItemLayout from '@/layouts/TreeItemLayout'
+import TreeItem from '@/components/TreeItem'
 
 export default {
   components: {
-    TreeItemLayout,
+    TreeItem,
   },
   props: {
     name: {
       type: String,
       required: true,
     },
-    target: {
+    type: {
       type: String,
       required: true,
     },

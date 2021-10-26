@@ -7,7 +7,7 @@
         :show-contents.sync="showContents"
       />
 
-      <component v-else :is="`v-${content.type}`" v-bind="content" />
+      <tree-entity v-else v-bind="content" />
 
       <tree
         v-if="content.contents && showContents"
@@ -22,8 +22,7 @@ export default {
   components: {
     Tree: () => import('@/components/Tree'),
     Directory: () => import('@/components/Directory'),
-    vFile: () => import('@/components/File'),
-    vLink: () => import('@/components/Link'),
+    TreeEntity: () => import('@/components/TreeEntity'),
   },
   props: {
     contents: {
