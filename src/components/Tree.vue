@@ -4,19 +4,14 @@
       <directory
         v-if="content.type === 'directory'"
         :name="content.name"
+        :contents="content.contents"
         :show-contents.sync="showContents"
         :path="path"
       />
 
       <tree-entity
-        v-else
+        v-else-if="content.name && content.type"
         v-bind="{ ...content, path }"
-      />
-
-      <tree
-        v-if="content.contents && showContents"
-        :contents="content.contents"
-        :path="`${path}/${content.name}`"
       />
     </div>
   </div>
@@ -25,7 +20,6 @@
 <script>
 export default {
   components: {
-    Tree: () => import('@/components/Tree'),
     Directory: () => import('@/components/Directory'),
     TreeEntity: () => import('@/components/TreeEntity'),
   },

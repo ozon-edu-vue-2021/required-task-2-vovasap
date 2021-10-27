@@ -1,39 +1,27 @@
 <template>
   <div id="app">
     <div class="path">{{ fullPath }}</div>
-    <tree :contents="[test]" />
+    <tree :contents="[data.data]" />
   </div>
 </template>
 
 <script>
 import Tree from '@/components/Tree'
+import nodeModules from './static/node_modules.json'
 
 export default {
   name: 'App',
   components: {
     Tree,
   },
-  data() {
-    return {
-      test: {
-        type: 'directory',
-        name: 'code-frame',
-        contents: [
-          { type: 'file', name: 'LICENSE' },
-          { type: 'link', name: 'ozon', target: 'https://www.ozon.ru/' },
-          {
-            type: 'directory',
-            name: 'lib',
-            contents: [{ type: 'file', name: 'index.js' }],
-          },
-          { type: 'file', name: 'package.json' },
-        ],
-      },
-    }
-  },
   computed: {
     fullPath() {
       return this.$store.getters['path']
+    },
+    data() {
+      return {
+        data: nodeModules,
+      }
     },
   },
 }
