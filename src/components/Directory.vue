@@ -2,6 +2,7 @@
   <tree-item
     :icon="showContents ? 'directory-open' : 'directory'"
     :name="name"
+    :path="path"
     @click="toggleContentsDisplay"
     @keyup.enter="toggleContentsDisplay"
   />
@@ -16,6 +17,10 @@ export default {
   },
   props: {
     name: {
+      type: String,
+      required: true,
+    },
+    path: {
       type: String,
       required: true,
     },

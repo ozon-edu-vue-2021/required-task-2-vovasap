@@ -1,5 +1,10 @@
 <template>
-  <tree-item :icon="type" :name="name" can-selected />
+  <tree-item
+    :icon="type"
+    :name="name"
+    :path="path"
+    can-selected
+  />
 </template>
 
 <script>
@@ -15,6 +20,10 @@ export default {
       required: true,
     },
     type: {
+      type: String,
+      required: true,
+    },
+    path: {
       type: String,
       required: true,
     },

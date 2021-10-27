@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <span>{{ fullPath }}</span>
     <tree :contents="[test]" />
   </div>
 </template>
@@ -29,6 +30,11 @@ export default {
         ],
       },
     }
+  },
+  computed: {
+    fullPath() {
+      return this.$store.getters['path']
+    },
   },
 }
 </script>

@@ -5,13 +5,18 @@
         v-if="content.type === 'directory'"
         :name="content.name"
         :show-contents.sync="showContents"
+        :path="path"
       />
 
-      <tree-entity v-else v-bind="content" />
+      <tree-entity
+        v-else
+        v-bind="{ ...content, path }"
+      />
 
       <tree
         v-if="content.contents && showContents"
         :contents="content.contents"
+        :path="`${path}/${content.name}`"
       />
     </div>
   </div>
@@ -28,6 +33,10 @@ export default {
     contents: {
       type: Array,
       required: true,
+    },
+    path: {
+      type: String,
+      default: '',
     },
   },
   data() {

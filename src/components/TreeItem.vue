@@ -8,6 +8,8 @@
         type="text"
         :value="name"
         @keyup.enter="$emit('keyup', $event)"
+        @focus="handleFocus"
+        @blur="handleBlur"
       />
       <div class="tree-item-layout__overlay"></div>
     </div>
@@ -32,6 +34,10 @@ export default {
       type: String,
       required: true,
     },
+    path: {
+      type: String,
+      required: true,
+    },
     canSelected: {
       type: Boolean,
       default: false,
@@ -39,15 +45,20 @@ export default {
   },
   methods: {
     handleClick(e) {
-      if (this.canSelected) {
-        this.select(this.$refs.input)
-      } else {
+      if (!this.canSelected) {
         this.$emit('click', e)
       }
+      this.select(this.$refs.input)
     },
     select: (element) => {
       element.focus()
       element.select()
+    },
+    handleFocus() {
+      this.$store.commit('setPath', `${this.path}/${this.name}`)
+    },
+    handleBlur() {
+      this.$store.commit('setPath', ``)
     },
   },
 }
