@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <span>{{ fullPath }}</span>
+    <div class="path">{{ fullPath }}</div>
     <tree :contents="[test]" />
   </div>
 </template>
@@ -49,5 +49,8 @@ export default {
 }
 .indent {
   margin-left: 10px;
+}
+.path {
+  min-height: 20px;
 }
 </style>
