@@ -7,7 +7,7 @@
 
 <script>
 import Tree from '@/components/Tree'
-import nodeModules from './static/node_modules.json'
+import nodeModules from '../public/static/node_modules.json'
 
 export default {
   name: 'App',
