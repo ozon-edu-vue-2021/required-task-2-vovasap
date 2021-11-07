@@ -1,34 +1,20 @@
 <template>
   <div class="tree-item-layout" @click="handleClick">
-    <icon v-if="icon" :icon="icon" />
-    <div class="tree-item-layout__title">
-      <input
-        ref="input"
-        class="tree-item-layout__input"
-        type="text"
-        :value="name"
-        @keyup.enter="$emit('keyup', $event)"
-        @focus="handleFocus"
-        @blur="handleBlur"
-      />
-      <div class="tree-item-layout__overlay"></div>
-    </div>
+    <span
+      class="icon"
+      :style="{ background: `url(${imgLink}) no-repeat` }"
+    ></span>
+    <span ref="input" type="text" @keyup.enter="$emit('keyup', $event)">
+      {{ name }}
+    </span>
   </div>
 </template>
 <script>
-import Icon from '@/components/Icon'
-
 export default {
-  components: {
-    Icon,
-  },
   props: {
-    icon: {
+    type: {
       type: String,
-      default: null,
-      validator: (value) =>
-        !value ||
-        ['directory', 'directory-open', 'file', 'link'].includes(value),
+      required: true,
     },
     name: {
       type: String,
@@ -38,47 +24,39 @@ export default {
       type: String,
       required: true,
     },
-    canSelected: {
-      type: Boolean,
-      default: false,
+  },
+  data() {
+    return {
+      className: null,
+    }
+  },
+  computed: {
+    imgLink() {
+      return require(`../assets/svg/${this.type}.svg`)
     },
   },
   methods: {
     handleClick(e) {
-      if (!this.canSelected) {
-        this.$emit('click', e)
-      }
-      this.select(this.$refs.input)
-    },
-    select: (element) => {
-      element.focus()
-      element.select()
-    },
-    handleFocus() {
+      this.$emit('click', e)
       this.$store.commit('setPath', `${this.path}/${this.name}`)
-    },
-    handleBlur() {
-      this.$store.commit('setPath', ``)
     },
   },
 }
 </script>
 <style scoped>
 .tree-item-layout {
-  display: flex;
-  gap: 10px;
-}
-.tree-item-layout {
   position: relative;
+  padding-left: 20px;
+  text-align: left;
+
+  cursor: pointer;
 }
-.tree-item-layout__input {
-  border: none;
-  outline: none;
-}
-.tree-item-layout__overlay {
+
+.icon {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
 }
 </style>

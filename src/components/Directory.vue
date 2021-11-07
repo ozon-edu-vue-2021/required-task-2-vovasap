@@ -1,7 +1,7 @@
 <template>
   <div>
     <tree-item
-      :icon="showContents ? 'directory-open' : 'directory'"
+      :type="showContents ? `${type}-open` : type"
       :name="name"
       :path="path"
       @click="toggleContentsDisplay"
@@ -25,6 +25,10 @@ export default {
     Tree,
   },
   props: {
+    type: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,

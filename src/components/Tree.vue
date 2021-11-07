@@ -3,15 +3,18 @@
     <div v-for="content in contents" :key="content.name">
       <directory
         v-if="content.type === 'directory'"
+        :type="content.type"
         :name="content.name"
         :contents="content.contents"
         :show-contents.sync="showContents"
         :path="path"
       />
 
-      <tree-entity
+      <tree-item
         v-else-if="content.name && content.type"
-        v-bind="{ ...content, path }"
+        :type="content.type"
+        :name="content.name"
+        :path="path"
       />
     </div>
   </div>
@@ -21,7 +24,7 @@
 export default {
   components: {
     Directory: () => import('@/components/Directory'),
-    TreeEntity: () => import('@/components/TreeEntity'),
+    TreeItem: () => import('@/components/TreeItem'),
   },
   props: {
     contents: {

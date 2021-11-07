@@ -39,6 +39,6 @@ export default {
   margin-left: 10px;
 }
 .path {
-  min-height: 20px;
+  min-height: 30px;
 }
 </style>
