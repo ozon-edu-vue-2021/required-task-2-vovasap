@@ -1,5 +1,11 @@
 <template>
-  <div class="tree-item-layout" @click="handleClick">
+  <div
+    class="tree-item-layout"
+    tabindex="0"
+    @click="handleClick"
+    @keyup.enter="$emit('keyup', $event)"
+    @keyup.tab="focus"
+  >
     <span
       class="icon"
       :style="{ background: `url(${imgLink}) no-repeat` }"
@@ -36,9 +42,15 @@ export default {
     },
   },
   methods: {
+    setPath() {
+      this.$store.commit('setPath', `${this.path}/${this.name}`)
+    },
     handleClick(e) {
       this.$emit('click', e)
-      this.$store.commit('setPath', `${this.path}/${this.name}`)
+      this.setPath()
+    },
+    focus() {
+      this.setPath()
     },
   },
 }
