@@ -58,17 +58,24 @@ export default {
 <style scoped>
 .tree-item-layout {
   position: relative;
-  padding-left: 20px;
+  margin: 3px;
+  padding-left: 25px;
   text-align: left;
 
   cursor: pointer;
 }
+.tree-item-layout:focus {
+  background: #8f8;
+  border-radius: 3px;
+
+  outline: none;
+}
 
 .icon {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 15px;
+  top: 2px;
+  left: 3px;
+  width: 20px;
   height: 15px;
 }
 </style>
