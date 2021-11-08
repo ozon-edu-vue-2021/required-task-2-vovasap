@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="path">{{ fullPath }}</div>
-    <tree :contents="[data.data]" />
+    <tree :contents="[data]" />
   </div>
 </template>
 
@@ -18,11 +18,11 @@ export default {
     fullPath() {
       return this.$store.getters['path']
     },
-    data() {
-      return {
-        data: nodeModules,
-      }
-    },
+  },
+  data() {
+    return {
+      data: nodeModules,
+    }
   },
 }
 </script>
