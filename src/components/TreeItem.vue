@@ -4,7 +4,8 @@
     tabindex="0"
     @click="handleClick"
     @keyup.enter="$emit('keyup', $event)"
-    @keyup.tab="focus"
+    @keyup.tab="handleFocus"
+    @blur="handleBlur"
   >
     <span
       class="icon"
@@ -42,15 +43,18 @@ export default {
     },
   },
   methods: {
-    setPath() {
-      this.$store.commit('setPath', `${this.path}/${this.name}`)
+    setPath(path) {
+      this.$store.commit('setPath', path)
     },
     handleClick(e) {
       this.$emit('click', e)
-      this.setPath()
+      this.setPath(`${this.path}/${this.name}`)
     },
-    focus() {
-      this.setPath()
+    handleFocus() {
+      this.setPath(`${this.path}/${this.name}`)
+    },
+    handleBlur() {
+      this.setPath('')
     },
   },
 }
