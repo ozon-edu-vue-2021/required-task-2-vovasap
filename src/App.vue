@@ -1,18 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="path">{{ fullPath }}</div>
+    <tree :contents="[data]" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Tree from '@/components/Tree'
+import nodeModules from '../public/static/node_modules.json'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Tree,
+  },
+  computed: {
+    fullPath() {
+      return this.$store.getters['path']
+    },
+  },
+  data() {
+    return {
+      data: nodeModules,
+    }
+  },
 }
 </script>
 
@@ -23,6 +34,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.indent {
+  margin-left: 10px;
+}
+.path {
+  min-height: 30px;
 }
 </style>
